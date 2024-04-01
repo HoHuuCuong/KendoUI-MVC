@@ -1,0 +1,47 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <base href="https://demos.telerik.com/kendo-ui/dropdownlist/remotedatasource">
+    <style>
+        html {
+            font-size: 14px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+    <title></title>
+    <link href="https://kendo.cdn.telerik.com/themes/7.2.1/default/default-main.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+
+    <script src="https://kendo.cdn.telerik.com/2024.1.319/js/kendo.all.min.js"></script>
+
+
+</head>
+<body>
+
+    <div class="k-d-flex k-justify-content-center" style="padding-top: 54px;">
+        <div class="k-w-300">
+            <label for="products">Products:</label>
+            <input id="products" />
+        </div>
+    </div>
+
+    <script>
+
+                var baseURL = window.location.protocol + "//" + window.location.host + "/";
+                $.get(baseURL + 'User/GetData', function(datasource) {
+                  console.log(datasource);
+
+
+                $(document).ready(function() {
+                    $("#products").kendoDropDownList({
+                        dataTextField: "UserName",
+                        dataValueField: "UserID",
+                        dataSource: datasource
+                    });
+                     });
+                });
+    </script>
+
+
+</body>
+</html>
